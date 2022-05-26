@@ -1,21 +1,21 @@
 <%= form_with(model: recipe, url: recipes_path) do |form|%>
   <div class="form-element">
-    <%= form.label, "Recipe Name:" %>
+    <%= form.label :name, "Recipe Name:" %>
     <%= form.text_field :name, placeholder: 'Name of the Recipe', class:"form-text" %>
   </div>
   <br>
   <div class="form-element">
-    <%= form.label, "Cooking Time:"%>
+    <%= form.label :cookingTime, "Cooking Time:"%>
     <%= form.text_field :cookingTime, placeholder: 'Cooking Time of the Recipe', class:"form-text" %>
   </div>
   <br>
   <div class="form-element">
-    <%= form.label, "Prepation Time:" %>
+    <%= form.label :prepationTime, "Prepation Time:" %>
     <%= form.text_field :prepationTime, placeholder: 'Prepation Time of the Recipe', class:"form-text" %>
   </div>
   <br>
   <div class="form-element">
-    <%= form.label, "Description:" %>
+    <%= form.label :description, "Description:" %>
     <%= form.text_area :description, placeholder: 'Description of the Recipe', class:'form-text-area' %>
   </div>
   <br>
