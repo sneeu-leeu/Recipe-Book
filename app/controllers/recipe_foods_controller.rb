@@ -7,8 +7,8 @@ class RecipeFoodsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.create(recipe_foods_params)
-    if @recipe_food save
-    flash[:notice] = 'Food Created Successfully'
+    if @recipe_food.save
+      flash[:notice] = 'Food Created Successfully'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class RecipeFoodsController < ApplicationController
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
     @recipe_food.destroy
-    flash[:success] = "Recipe Foods Removed"
+    flash[:success] = 'Recipe Foods Removed'
     redirect_to recipe_path(@recipe_food.recipe_id)
   end
 
