@@ -1,2 +1,48 @@
-<h1>Recipies#show</h1>
-<p>Find me in app/views/recipies/show.html.erb</p>
+<main class="recipe-container">
+  <div class="recipe-header">
+    <h2>
+      <%= @recipe.name %>
+    </h2>
+    <div>
+      <p> Preparation Time: <%= @recipe.preparationTime %> </p>
+      <span> <p>Public</p> </span>
+    </div>
+    <div>
+      <p>Cooking Time: <%= @recipe.cookingTime %></p>
+    </div>
+    <div>
+      <h2>Description:</h2>
+      <p> <%= @recipe.description %> </p>
+    </div>
+    <div>
+      <button>Generate Shopping List</button>
+      <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'button-class' %>
+    </div>
+  </div>
+  <hr>
+  <table class="recipe-foods-table">
+    <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recipe.recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name%></th>
+        <td><%= recipe_food.quantity%><%= recipe_food.food.measurementUnit  %></td>
+        <td><%= recipe_food.quantity %> <%= recipe_food.food.price %></td>
+        <td>
+          <div>
+            <%= link_to 'Modify', recipe_recipe_foods_path(recipe_id: @recipe.id, id: recipe_food.id), class:'button-class' %>
+            <%= link_to 'Remove', edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class:'button-class' %>
+          </div>
+        </td>
+      </tr>
+    <% end%>
+    </tbody>
+  </table>
+</main>
