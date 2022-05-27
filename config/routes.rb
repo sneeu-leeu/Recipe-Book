@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
-  get 'inventories/index'
-  get 'inventories/new'
-  get 'inventories/show'
-  get 'inventories/create'
-
-  devise_for :users
   root "recipes#index"
 
-  resources :public_recipes, :shopping_list
-
-  resources :foods, only: [:index, :new, :create, :destroy]
-
-  resources :recipes do
-    resources :recipe_foods
+  resources :users, only: %i[index]
+  resources :foods, only: %i[index new create destroy]
+  resources :recipes, only: [:index, :show, :new, :create, :destroy] do
+    resources :recipe_foods, only: [:new, :create, :destroy, :update, :edit]
+    resources :shopping_list, only: [:index ,:show]
+  end
+  resources :inventories do
+    resources :inventory_foods
   end
 end
