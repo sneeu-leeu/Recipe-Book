@@ -8,7 +8,11 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :inventories, dependent: :destroy
 
-  # def set_role
-  #   update(role: 'user')
-  # end
+  def set_role
+    update(role: 'user')
+  end
+
+  def sign_out
+    sign_out_and_redirect(current_user)
+  end
 end
