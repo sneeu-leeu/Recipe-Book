@@ -1,2 +1,6 @@
-<h1>RecipeFoods#new</h1>
-<p>Find me in app/views/recipe_foods/new.html.erb</p>
+<main class="recipes-container">
+  <h1>New Ingredient</h1>
+  <p>Enter Following Fields to Add New Ingredient</p>
+  <%= render 'recipe_food_form', recipe_food: @recipe_food %>
+  <%= link_to 'Cancel', recipes_path, class:'cancel-button' %>
+</main>
