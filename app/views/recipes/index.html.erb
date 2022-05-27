@@ -1,21 +1,22 @@
-<main class="recipes-container">
+<main>
   <div class="create-div">
     <%= link_to "Create New Recipe", new_recipe_path, class: "btn btn-success"%>
   </div>
-
-  <% @recipes.each do |recipe|%>
-    <div class="recipe">
-      <div class="recipe-name">
-        <div>
-          <%= link_to "#{recipe.name}", recipe_path(recipe), id: "recipe_#{recipe.id}", class: "text-reset text-decoration-none fs-3 text-capitalize" %>
+  <div class='recipe_holder'>
+    <% @recipes.each do |recipe|%>
+      <div class="recipe">
+        <div class="recipe-name">
+          <div>
+            <%= link_to "#{recipe.name}", recipe_path(recipe), id: "recipe_#{recipe.id}", class: "text-reset text-decoration-none fs-3 text-capitalize" %>
+          </div>
+          <div class="remove-recipe">
+            <%= button_to 'Remove Recipe', recipe_path(recipe), method: :delete, class: "btn btn-success" %>
+          </div>
         </div>
-        <div class="remove-recipe">
-          <%= button_to 'Remove Recipe', recipe_path(recipe), method: :delete, class: "btn btn-success" %>
+        <div class="description">
+          <p><%= recipe.description %></p>
         </div>
       </div>
-      <div class="description">
-        <p><%= recipe.description %></p>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </main>
