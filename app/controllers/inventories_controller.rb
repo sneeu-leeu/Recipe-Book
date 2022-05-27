@@ -3,8 +3,7 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.all
   end
 
-  def new
-  end
+  def new; end
 
   def show
     @inventory = Inventory.find(params[:id])
@@ -25,7 +24,6 @@ class InventoriesController < ApplicationController
     @inventory.destroy
     redirect_to inventories_path
   end
-
 
   private
 

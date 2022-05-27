@@ -5,8 +5,7 @@ class InventoryFoodsController < ApplicationController
     @inventory_food_list = InventoryFood.where(inventory_id: params[:inventory_id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @new_food = InventoryFood.new(quantity: params[:quantity], food_id: params[:food],
