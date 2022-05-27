@@ -1,2 +1,24 @@
-<h1>RecipeFoods#edit</h1>
-<p>Find me in app/views/recipe_foods/edit.html.erb</p>
+<div>
+  <%= form_with  model: @recipe_food, url: { action: "update"}, local: true do |form|%>
+    <div>
+      <div>
+        <%= form.label :food %><br>
+        <%= form.select :food_id, current_user.foods.collect {|food| [food.name, food.id]},{ include_blank: true} %><br>
+      </div>
+
+      <div>
+        <%= form.label :quantity %><br>
+        <%= form.number_field :quantity, required: true, min:1%><br>
+      </div>
+
+      <div>
+        <%= form.submit "Update Foods of the Recipe" %>
+      </div>
+    </div>
+  <%end%>
+  <div>
+    <div>
+      <%=link_to 'Cancel', recipes_path %>
+    </div>
+  </div>
+</div>

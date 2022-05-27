@@ -5,7 +5,19 @@
     </h2>
     <div>
       <p> Preparation Time: <%= @recipe.preparationTime %> </p>
-      <span> <p>Public</p> </span>
+      <div>
+        <%= form_with url: update_path(@recipe), method: "put" do |form| %>
+          <div>
+            <% if @recipe.public == false %>
+              <%= form.check_box :public, id: "switch", onchange: "this.form.submit();"%>
+              <label for="switch">Public</label>
+            <% else %>
+              <%= form.check_box :public, id: "checked-switch", checked: true, onchange: "this.form.submit();" %>
+              <label for="checked-switch">Public</label>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
     </div>
     <div>
       <p>Cooking Time: <%= @recipe.cookingTime %></p>
@@ -37,8 +49,8 @@
         <td><%= recipe_food.quantity %> <%= recipe_food.food.price %></td>
         <td>
           <div>
-            <%= link_to 'Modify', recipe_recipe_foods_path(recipe_id: @recipe.id, id: recipe_food.id), class:'button-class' %>
-            <%= link_to 'Remove', edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), class:'button-class' %>
+            <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id) %>
+            <%= button_to "Delete", recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), method: :delete %>
           </div>
         </td>
       </tr>
