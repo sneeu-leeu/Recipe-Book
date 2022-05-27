@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'inventories/index'
+  get 'inventories/new'
+  get 'inventories/show'
+  get 'inventories/create'
 
   devise_for :users
   root "recipes#index"
