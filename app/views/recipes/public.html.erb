@@ -1,15 +1,17 @@
-<div>
+<div class="recipes">
   <% @recipes.each do |recipe|%>
-    <div>
-      <div>
+    <div class="recipe">
+      <div class="recipe-name">
         <div>
-          <%= link_to "#{recipe.name}", recipe_path(recipe) %>
+          <%= link_to "#{recipe.name}", recipe_path(recipe), class: "text-reset text-decoration-none fs-3 text-capitalize" %>
         </div>
-        <div>
-          <%= button_to 'Remove', recipe_path(recipe), method: :delete %>
+        <div class="remove-recipe">
+          <% if can? :destroy, recipe%>
+            <%= button_to 'Remove', recipe_path(recipe), method: :delete, class: "badge bg-green text-decoration-none" %>
+          <%end%>
         </div>
       </div>
-      <div>
+      <div class="description">
         <p><%= recipe.description %></p>
       </div>
     </div>
