@@ -1,0 +1,6 @@
+<main class="recipes-container">
+  <h1>New Recipe</h1>
+  <p>Add your recipe:</p>
+  <%= render 'recipe_form', recipe: @recipe %>
+  <%= link_to 'Cancel', recipes_path, class:'cancel-button' %>
+</main>
