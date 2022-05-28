@@ -14,4 +14,3 @@ class User < ApplicationRecord
     update(role: 'user')
   end
 end
-
