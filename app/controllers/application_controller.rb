@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :success, :error, :warning, :message
+  add_flash_types :succes, :error, :warning, :message
   protect_from_forgery prepend: true
 
   before_action :authenticate_user!
@@ -8,7 +8,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password) }
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
+  end
+
+  def after_sign_up_path_for(_resource)
+    root_path
   end
 end
