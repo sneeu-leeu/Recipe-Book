@@ -5,10 +5,12 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
+    @ingredient_count = 0
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.create(recipe_foods_params)
     if @recipe_food.save
       flash[:notice] = 'Food Created Successfully'
+      @ingredient_count += 1
     else
       render :new
     end
