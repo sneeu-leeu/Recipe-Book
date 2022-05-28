@@ -1,28 +1,12 @@
-<h2 class="heading">Add Recipe Food</h2>
-<div>
-  <%= form_with  model: [@recipe, @recipe.recipe_foods.create], class:"input-form"  do |f|%>
-    <div class="form-div" >
-
-      <div class="mb-3 col-sm-8">
-        <%= f.label :food, class:"form-label" %><br>
-        <%= f.select :food_id, current_user.foods.collect {|food| [food.name, food.id]},{ include_blank: true} , class:"form-select" %><br>
-
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Generate Shopping List
+</button>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d-flex flex-column p-2">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <div class="mb-3 col-sm-8">
-        <%= f.label :quantity, class:"form-label" %><br>
-        <%= f.number_field :quantity ,  class:"form-control" , required: true, placeholder: '1',  min: 1%><br>
-      </div>
-
-      <div class="mb-3 col-sm-2">
-        <%= f.submit "Create Recipe_Food", class:"btn btn-success form-control" %>
-      </div>
-    </div>
-  <%end%>
-  <div class="form-div" >
-    <div class="mb-3 col-sm-2">
-
-      <%=link_to 'Back', foods_path, class:"btn btn-success form-control"%>
     </div>
   </div>
 </div>

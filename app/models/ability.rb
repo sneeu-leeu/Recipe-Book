@@ -22,6 +22,8 @@ class Ability
       can %i[create], :all
     end
 
+    # If you pass :manage it will apply to every action. Other common actions
+    #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
