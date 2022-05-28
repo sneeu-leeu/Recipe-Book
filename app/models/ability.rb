@@ -3,12 +3,14 @@ class Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
-
     user ||= User.new # guest user (not logged in)
-    if user.admin?
+    if user.role == 'admin'
       can :manage, :all
     else
       can :read, Recipe do |recipe|
+        recipe.user == user || recipe.public
+      end
+      can [:update, :destroy], Recipe do |recipe|
         recipe.user == user
       end
 
@@ -18,7 +20,8 @@ class Ability
       end
       can %i[create], :all
     end
-
+    # If you pass :manage it will apply to every action. Other common actions
+    #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

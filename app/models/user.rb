@@ -13,13 +13,5 @@ class User < ApplicationRecord
   def set_role
     update(role: 'user')
   end
-
-  def admin?
-    false
-  end
-
-  def sign_out
-    sign_out_and_redirect(current_user)
-  end
 end
 
