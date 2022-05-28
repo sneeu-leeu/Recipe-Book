@@ -16,7 +16,7 @@
 
       <div class="mb-3 col-sm-8">
         <%= f.label :price, class:"form-label" %><br>
-        <%= f.text_field :price ,  class:"form-control" , required: true, id:"price"%><br>
+        <%= f.number_field :price ,  class:"form-control" , required: true, id:"price", step: :any%><br>
       </div>
 
       <div class="mb-3 col-sm-2">
