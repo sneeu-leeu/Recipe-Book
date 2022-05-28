@@ -10,5 +10,4 @@ RSpec.feature 'Food Index', type: :feature do
     visit recipes_path
     click_link('Add recipe')
   end
-
 end
